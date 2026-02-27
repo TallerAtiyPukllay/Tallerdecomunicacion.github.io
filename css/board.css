@@ -1,0 +1,295 @@
+/* Estilos para el tablero de juego de la sección Práctica */
+
+.game-board-wrapper {
+    position: relative;
+    padding: 10px;
+    background: #f8fafc;
+    border-radius: 20px;
+    border: 3px solid #e2e8f0;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centra las filas al medio del contenedor */
+    gap: 10px;
+    /* Volvemos al gap original de 10px */
+    padding: 10px;
+    width: 100%;
+}
+
+.board-row {
+    display: flex;
+    gap: 10px;
+    /* Volvemos al gap original de 10px */
+    width: 100%;
+    justify-content: center;
+}
+
+.board-row.reverse-row {
+    flex-direction: row-reverse;
+}
+
+/* Celda Fantasma para estabilizar los codos de la S en Flexbox */
+.invisible-cell {
+    visibility: hidden;
+    border-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.board-cell {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    background: white;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #94a3b8;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.board-cell.start {
+    background: #dcfce7;
+    border: 2px solid #22c55e;
+    color: #166534;
+    font-size: 0.9rem;
+}
+
+.board-cell.finish {
+    background: #fef08a;
+    border: 2px solid #eab308;
+    color: #854d0e;
+    font-size: 0.9rem;
+}
+
+/* Casillas Comodines Especiales */
+.board-cell.trap-cell {
+    background: #fee2e2 !important;
+    /* Rojo bajito pastel */
+    border-color: #f87171 !important;
+    color: #991b1b !important;
+}
+
+.board-cell.boost-cell {
+    background: #ecfccb !important;
+    /* Verde lima muy claro */
+    border-color: #84cc16 !important;
+    color: #3f6212 !important;
+}
+
+.special-icon {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 1.2rem;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+.board-cell.active-path {
+    background: #eff6ff;
+    border-color: #93c5fd;
+    color: #3b82f6;
+}
+
+/* El Token o Ficha (avatar que salta) */
+#player-token {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    z-index: 100;
+    /* Animación de salto hiper sutil y fluida */
+    transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    top: 30px;
+    /* valores iniciales, js lo sobreescribe */
+    left: 30px;
+}
+
+/* El Dado Mágico */
+.dice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.dice-cube {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: normal;
+    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.4);
+    transition: transform 0.5s;
+    user-select: none;
+}
+
+.dice-cube.rolling {
+    animation: rollDiceAnim 0.4s infinite linear;
+}
+
+@keyframes rollDiceAnim {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    25% {
+        transform: rotate(90deg) scale(1.1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+
+    75% {
+        transform: rotate(270deg) scale(1.1);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+/* Tipos de Casillas Específicas (Opcional visual) */
+.cell-type-1 {
+    box-shadow: inset 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.cell-type-2 {
+    box-shadow: inset 0 0 0 3px rgba(168, 85, 247, 0.1);
+}
+
+.cell-type-3 {
+    box-shadow: inset 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.cell-type-4 {
+    box-shadow: inset 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.cell-type-5 {
+    box-shadow: inset 0 0 0 3px rgba(236, 72, 153, 0.1);
+}
+
+/* ------------------------------------- */
+/* ESTILOS PARA LA NUEVA UI MINIMALISTA */
+/* ------------------------------------- */
+
+/* Pantalla Intro y Botón Pulsante */
+.pulse-anim {
+    animation: pulseBtn 2s infinite;
+}
+
+@keyframes pulseBtn {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.7);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(25, 135, 84, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(25, 135, 84, 0);
+    }
+}
+
+/* FAB (Floating Action Button) del Dado */
+.fab-container {
+    position: fixed;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    z-index: 1040;
+    /* Menor que modals y sweetalerts (1060+) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Modificador global para forzar SweetAlert encima del FAB */
+.swal2-container {
+    z-index: 99999 !important;
+}
+
+@media (max-width: 768px) {
+    .fab-container {
+        /* Mantenemos en el centro derecho centrado para celular */
+        right: 10px;
+    }
+}
+
+.fab-dice {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border: 4px solid white;
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.6);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    outline: none;
+}
+
+.fab-dice:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.fab-dice:active {
+    transform: translateY(2px) scale(0.95);
+}
+
+.fab-dice:disabled {
+    filter: grayscale(1);
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Animación y cara minimizada del dado flotante */
+.dice-cube-mini {
+    font-size: 2.5rem;
+    font-weight: normal;
+    /* Cambiado de bold a normal para apreciar los puntos del dado Unicode */
+    user-select: none;
+    transition: transform 0.5s;
+}
+
+.dice-cube-mini.rolling {
+    animation: rollDiceAnim 0.3s infinite linear;
+}
+
+.fab-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}

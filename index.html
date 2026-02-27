@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/scroll-btn.css">
     <link rel="stylesheet" href="css/scroll-mobile.css">
     <link rel="stylesheet" href="css/responsive-utils.css">
-
+    <link rel="stylesheet" href="css/board.css">
     <!-- Favicon para evitar error 404 y mejorar estética -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
@@ -150,111 +150,78 @@
         <div id="pantalla-practica" class="pantalla">
             <div class="container pt-0 pb-5">
                 <div class="row">
-                    <div class="col-lg-10 mx-auto">
-                        <!-- Título diferenciado -->
-                        <h1 class="display-6 fw-bold mb-3 d-block d-xxl-none">✏️ Taller de práctica (toca dos
-                            veces)</h1>
-                        <h1 class="display-6 fw-bold mb-3 d-none d-xxl-block">✏️ Taller de práctica (arrastra y suelta)
-                        </h1>
+                    <div class="col-lg-12 mx-auto">
+                        <!-- PANTALLA 1: INTRODUCCIÓN AL JUEGO -->
+                        <div id="intro-practica" class="text-center py-4">
+                            <h1 class="display-4 fw-bold mb-4 text-primary mt-3">🎲 El Camino del Saber</h1>
+                            <p class="lead text-muted mb-4">Avanza por el gran tablero mágico resolviendo retos de
+                                puntuación para alcanzar la gloria.</p>
 
-                        <!-- Texto Lead -->
-                        <p class="lead text-muted mb-3 d-block d-xxl-none">Selecciona el signo correcto y completa las
-                            oraciones.</p>
-                        <p class="lead text-muted mb-3 d-none d-xxl-block">Arrastra los signos de puntuación a los
-                            espacios en blanco para
-                            completar correctamente las oraciones.</p>
-
-                        <!-- Instrucciones Móvil/Tablet/Laptop (Tap) -->
-                        <div class="alert alert-info mb-3 d-block d-xxl-none">
-                            <strong>📌 Instrucciones:</strong>
-                            <br>1. <strong>Toca un signo</strong> para seleccionarlo (se pondrá naranja).
-                            <br>2. <strong>Toca un espacio vacío</strong> para colocarlo.
-                        </div>
-
-                        <!-- Instrucciones Escritorio Grande (Drag) -->
-                        <div class="alert alert-info mb-3 d-none d-xxl-block">
-                            <strong>📌 Instrucciones:</strong>
-                            <br>Haz clic en un signo y arrástralo sin soltar hasta el espacio vacío correspondiente.
-                        </div>
-
-                        <!-- Caja de Herramientas -->
-                        <div class="mb-3 p-4 bg-light rounded border-2" style="border-color: #2563eb;">
-                            <!-- Título caja herramientas diferenciado -->
-                            <h5 class="mb-3 fw-bold d-block d-xxl-none">🛠️ Signos disponibles (toca uno):</h5>
-                            <h5 class="mb-3 fw-bold d-none d-xxl-block">🛠️ Signos disponibles (arrastra uno):</h5>
-
-                            <div id="toolbox" class="d-flex flex-wrap justify-content-center gap-3">
-                                <div class="signo-draggable" draggable="true" data-signo=".">
-                                    <div class="signo-label">Punto</div>
-                                    <div class="signo-symbol">.</div>
-                                </div>
-                                <div class="signo-draggable" draggable="true" data-signo=",">
-                                    <div class="signo-label">Coma</div>
-                                    <div class="signo-symbol">,</div>
-                                </div>
-                                <div class="signo-draggable" draggable="true" data-signo=";">
-                                    <div class="signo-label">Punto y Coma</div>
-                                    <div class="signo-symbol">;</div>
-                                </div>
-                                <div class="signo-draggable" draggable="true" data-signo=":">
-                                    <div class="signo-label">Dos Puntos</div>
-                                    <div class="signo-symbol">:</div>
-                                </div>
+                            <div class="alert alert-info text-start shadow-sm mx-auto mb-5 border-0 bg-white"
+                                style="max-width: 600px; border-left: 5px solid #0dcaf0 !important;">
+                                <h5 class="fw-bold text-dark mb-3"><i class="bi bi-info-circle-fill text-info me-2"></i>
+                                    Instrucciones de la Aventura:</h5>
+                                <ul class="mb-0 fs-5 text-secondary" style="line-height: 1.8;">
+                                    <li>Toca el <strong>Dado Flotante 🎲</strong> para avanzar.</li>
+                                    <li>Supera los <strong>mini-retos</strong> para conservar tu lugar.</li>
+                                    <li>Si fallas un reto, <span class="text-danger fw-bold">retrocedes</span> como
+                                        castigo.</li>
+                                    <li>Cuidado con las <strong>casillas trampa ⚠️</strong> y busca las súper
+                                        <strong>ayudas 🎁</strong>.
+                                    </li>
+                                    <li>¡Llega a la <strong>Meta 🏆</strong> para ganar la partida!</li>
+                                </ul>
                             </div>
+
+                            <button id="btn-iniciar-juego"
+                                class="btn btn-success btn-lg rounded-pill px-5 py-3 shadow-lg fw-bold fs-4 pulse-anim">
+                                INICIAR JUEGO <i class="bi bi-play-fill ms-1"></i>
+                            </button>
                         </div>
 
-                        <!-- Ejercicio de Práctica -->
-                        <div class="mb-5 p-3 bg-white border rounded shadow-sm">
-                            <h5 class="mb-4 fw-bold">✍️ Completa las oraciones con los signos correctos:</h5>
+                        <!-- PANTALLA 2: TABLERO DE JUEGO (Oculto al inicio) -->
+                        <div id="juego-practica" class="d-none text-center position-relative">
+                            <!-- Cabecera Ultra-Minimalista para ahorrar espacio vertical -->
+                            <div class="d-flex justify-content-between align-items-center mb-3 px-3">
+                                <h2 class="h4 fw-bold text-primary mb-0 d-none d-md-block">🎲 El Camino del Saber</h2>
+                                <h2 class="h5 fw-bold text-primary mb-0 d-block d-md-none">🎲 Camino del Saber</h2>
+                                <button id="btn-reset-board"
+                                    class="btn btn-sm btn-outline-danger rounded-pill fw-bold text-nowrap w-auto px-3">
+                                    <i class="bi bi-x-circle me-1"></i> Salir
+                                </button>
+                            </div>
 
-                            <!-- Oración 1 -->
-                            <div class="sentence-item mb-4">
-                                <div class="sentence-number">1.</div>
-                                <div class="sentence-text">
-                                    Mi hermana vive en Madrid<span class="drop-zone" data-correct=".">____</span>
+                            <!-- Panel de Control y Dado (VERSIÓN ESCRITORIO) -->
+                            <div class="dice-container mb-4 mt-2 bg-white p-3 p-md-4 rounded-4 shadow-sm border border-2 border-primary border-opacity-25 d-none d-md-block mx-auto"
+                                style="max-width: 450px;">
+                                <div class="d-flex flex-column justify-content-center align-items-center">
+                                    <h5 id="game-status-text-desktop" class="fw-bold text-secondary mb-3">¡Comienza la
+                                        partida!</h5>
+                                    <div class="d-flex justify-content-center align-items-center gap-4 w-100">
+                                        <div id="dice-visual-desktop" class="dice-cube flex-shrink-0"
+                                            style="font-size: 3rem; line-height: 1;">?</div>
+                                        <div class="flex-grow-1">
+                                            <button id="btn-roll-dice-desktop"
+                                                class="btn btn-danger btn-lg rounded-pill px-4 shadow shadow-sm fw-bold w-100">
+                                                <i class="bi bi-dice-5-fill me-2 fs-4 align-middle"></i><span
+                                                    class="align-middle fs-5">Lanzar Dado</span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Oración 2 -->
-                            <div class="sentence-item mb-4">
-                                <div class="sentence-number">2.</div>
-                                <div class="sentence-text">
-                                    Para preparar un café necesitas<span class="drop-zone" data-correct=":">____</span>
-                                    agua caliente<span class="drop-zone" data-correct=",">____</span> café molido y una
-                                    taza<span class="drop-zone" data-correct=".">____</span>
-                                </div>
-                            </div>
+                            <!-- Área invisible solo conservada para no romper la lógica existente -->
+                            <div id="game-status-text" class="d-none">¡Comienza la partida!</div>
 
-                            <!-- Oración 3 -->
-                            <div class="sentence-item mb-4">
-                                <div class="sentence-number">3.</div>
-                                <div class="sentence-text">
-                                    El viaje fue largo<span class="drop-zone" data-correct=";">____</span> sin
-                                    embargo<span class="drop-zone" data-correct=",">____</span> muy divertido<span
-                                        class="drop-zone" data-correct=".">____</span>
-                                </div>
-                            </div>
-
-                            <!-- Oración 4 -->
-                            <div class="sentence-item mb-4">
-                                <div class="sentence-number">4.</div>
-                                <div class="sentence-text">
-                                    Los ingredientes son<span class="drop-zone" data-correct=":">____</span> harina<span
-                                        class="drop-zone" data-correct=",">____</span> huevos<span class="drop-zone"
-                                        data-correct=",">____</span> azúcar y mantequilla<span class="drop-zone"
-                                        data-correct=".">____</span>
-                                </div>
+                            <!-- El Tablero de Juego (Grid dinámico) -->
+                            <div class="game-board-wrapper mx-auto mt-1 mb-5"
+                                style="max-width: 1100px; padding-bottom: 30px;">
+                                <!-- Ficha de Jugador (Avatar animado) -->
+                                <div id="player-token" title="¡Ese eres tú!">😎</div>
+                                <div class="game-board" id="game-board-grid"></div>
                             </div>
                         </div>
-
-                        <!-- Botones de Acción -->
-                        <div class="d-flex gap-3 justify-content-center mb-4 flex-wrap">
-                            <button id="verify-btn" class="btn btn-success btn-lg px-5">✓ Verificar respuestas</button>
-                            <button id="reset-btn" class="btn btn-warning btn-lg px-5">↻ Reiniciar ejercicio</button>
-                        </div>
-
-                        <!-- Retroalimentación -->
-                        <div id="feedback-practica" class="alert d-none" role="alert"></div>
                     </div>
                 </div>
             </div>
@@ -678,6 +645,14 @@
     <button id="scrollToTopBtn" class="shadow-lg" title="Volver arriba">
         <i class="bi bi-arrow-up-short"></i>
     </button>
+    <!-- BOTÓN FLOTANTE (FAB) DEL DADO (FUERA DE PANTALLAS PARA EVITAR BUGS FIXED) -->
+    <!-- d-none para iniciar oculto, d-md-none para que nunca salga en PC -->
+    <div id="fab-dice-container" class="fab-container d-none d-md-none">
+        <button id="btn-roll-dice-mobile" class="fab-dice shadow-lg" title="Lanzar Dado">
+            <div id="dice-visual-mobile" class="dice-cube-mini">?</div>
+        </button>
+        <div class="fab-label badge bg-danger rounded-pill shadow mt-1">Lanzar</div>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="js/bootstrap.bundle.min.js"></script>
