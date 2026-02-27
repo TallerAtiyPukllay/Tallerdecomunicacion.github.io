@@ -100,14 +100,14 @@ async function verifyAccess() {
             }
         }
 
-        // SI ES TEMPORAL, VERIFICAR TIEMPO (20 minutos de vida desde que entró = 1,200,000 milisegundos)
+        // SI ES TEMPORAL, VERIFICAR TIEMPO (10 minutos de vida desde que entró = 600,000 milisegundos)
         if (isValid && isTemporal) {
             const loginTime = parseInt(localStorage.getItem('atiy_login_timestamp') || '0', 10);
             const tiempoTranscurrido = Date.now() - loginTime;
 
-            if (tiempoTranscurrido > 1200000) {
+            if (tiempoTranscurrido > 600000) {
                 isValid = false;
-                redirectToLogin("El tiempo para esta cuenta visitante/temporal ha expirado (20 min). ¡Gracias por probar el software!");
+                redirectToLogin("El tiempo para esta cuenta visitante/temporal ha expirado (10 min). ¡Gracias por probar el software!");
                 return;
             }
         }
@@ -126,17 +126,17 @@ async function verifyAccess() {
 }
 
 // ==========================================
-// CONTROL DE INACTIVIDAD (10 MINUTOS)
+// CONTROL DE INACTIVIDAD (5 MINUTOS)
 // ==========================================
 let inactivityTimer;
-const INACTIVITY_LIMIT_MS = 10 * 60 * 1000; // 10 minutos exactos
+const INACTIVITY_LIMIT_MS = 5 * 60 * 1000; // 5 minutos exactos
 
 function startInactivityTimer() {
     clearTimeout(inactivityTimer);
     inactivityTimer = setTimeout(() => {
         // Solo aplicar si estamos dentro de la app (protege de aplicar en login.html)
         if (localStorage.getItem('atiy_key') && window.location.pathname.indexOf('login.html') === -1) {
-            redirectToLogin("La sesión se cerró automáticamente por inactividad prolongada (10 min). Por seguridad, vuelve a ingresar.");
+            redirectToLogin("La sesión se cerró automáticamente por inactividad prolongada (5 min). Por seguridad, vuelve a ingresar.");
         }
     }, INACTIVITY_LIMIT_MS);
 }
