@@ -277,10 +277,21 @@ class GameController {
     }
 
     obtenerPreguntasAleatorias() {
-        const preguntasNivel = baseDatos[this.nivelActual];
-        // Aleatorizar preguntas
-        const preguntasAleatorias = preguntasNivel.sort(() => Math.random() - 0.5);
-        // Aleatorizar también las opciones de cada pregunta y ajustar índice de respuesta correcta
+        // Obtenemos todas las preguntas del banco (clonando para no alterar el orden original global)
+        let preguntasBanco = [...baseDatos[this.nivelActual]];
+
+        // 1. Aleatorizar (barajar) todo el mazo completo de preguntas
+        preguntasBanco.sort(() => Math.random() - 0.5);
+
+        // 2. Extraer ÚNICAMENTE las necesarias según el nivel de dificultad
+        let cantidadSeleccionar = 5; // Por defecto basico
+        if (this.nivelActual === 'intermedio') cantidadSeleccionar = 10;
+        if (this.nivelActual === 'avanzado') cantidadSeleccionar = 15;
+
+        // Cortamos el mazo barajado para quedarnos solo con el subconjunto solicitado
+        const preguntasAleatorias = preguntasBanco.slice(0, Math.min(cantidadSeleccionar, preguntasBanco.length));
+
+        // 3. Aleatorizar también las opciones de cada pregunta extraída y ajustar índice
         return preguntasAleatorias.map(pregunta => {
             const opcionesConIndice = pregunta.opciones.map((opcion, index) => ({
                 texto: opcion,
@@ -288,9 +299,9 @@ class GameController {
             }));
             // Mezclar opciones
             opcionesConIndice.sort(() => Math.random() - 0.5);
-            // Encontrar nuevo índice de la respuesta correcta
+            // Encontrar nuevo índice de la respuesta correcta original
             const nuevoIndiceCorrecta = opcionesConIndice.findIndex(o => o.indiceOriginal === pregunta.correcta);
-            // Devolver pregunta con opciones desordenadas y nuevo índice correcto
+            // Devolver objeto de pregunta completamente cifrado
             return {
                 ...pregunta,
                 opciones: opcionesConIndice.map(o => o.texto),
