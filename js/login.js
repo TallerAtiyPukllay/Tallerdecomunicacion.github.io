@@ -103,16 +103,28 @@ async function checkAccess() {
         // 4. Validar Credenciales (SOLO NUBE)
         let isValid = false;
         let isTeacher = (section === 'DOCENTE');
+        let isTemporal = false;
 
-        if (isTeacher) {
-            // Validar DOCENTE (Solo Nube)
-            if (config && config.claves_docente && Array.isArray(config.claves_docente)) {
-                if (config.claves_docente.includes(key)) isValid = true;
+        // Validamos primero si es Temporal (puede ser para un docente probar o un alumno probar)
+        if (config && config.claves_temporales && Array.isArray(config.claves_temporales)) {
+            if (config.claves_temporales.includes(key)) {
+                isValid = true;
+                isTemporal = true;
             }
-        } else {
-            // Validar ALUMNO (Solo Nube)
-            if (config && config.claves_alumno && Array.isArray(config.claves_alumno)) {
-                if (config.claves_alumno.includes(key)) isValid = true;
+        }
+
+        // Si no es temporal, validamos por rol habitual
+        if (!isValid) {
+            if (isTeacher) {
+                // Validar DOCENTE (Solo Nube)
+                if (config && config.claves_docente && Array.isArray(config.claves_docente)) {
+                    if (config.claves_docente.includes(key)) isValid = true;
+                }
+            } else {
+                // Validar ALUMNO (Solo Nube)
+                if (config && config.claves_alumno && Array.isArray(config.claves_alumno)) {
+                    if (config.claves_alumno.includes(key)) isValid = true;
+                }
             }
         }
 
@@ -122,10 +134,17 @@ async function checkAccess() {
             els.serverStatus.textContent = "Conectado 🟢";
             els.serverStatus.className = "status-indicator online";
 
-            // Guardar sesión
+            // Guardar sesión principal
             localStorage.setItem('atiy_key', key);
             localStorage.setItem('atiy_student_name', name);
             localStorage.setItem('atiy_student_section', section);
+
+            // Lógica de cronómetro para cuenta temporal
+            if (isTemporal) {
+                localStorage.setItem('atiy_login_timestamp', Date.now().toString());
+            } else {
+                localStorage.removeItem('atiy_login_timestamp'); // Limpiamos por seguridad
+            }
 
             setTimeout(() => {
                 if (ipcRenderer) {

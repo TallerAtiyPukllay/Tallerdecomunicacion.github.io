@@ -83,25 +83,41 @@ async function verifyAccess() {
 
         // 2. Verificar Clave Específica
         let isValid = false;
+        let isTemporal = false;
 
-        if (role === 'DOCENTE') {
-            // Verificar si la clave sigue en la lista de docentes
-            if (config.claves_docente && config.claves_docente.includes(currentKey)) {
-                isValid = true;
+        // Comprobar primero Temporal
+        if (config.claves_temporales && Array.isArray(config.claves_temporales) && config.claves_temporales.includes(currentKey)) {
+            isValid = true;
+            isTemporal = true;
+        }
+
+        // Si no es temporal, comprobar tradicional
+        if (!isValid) {
+            if (role === 'DOCENTE') {
+                if (config.claves_docente && config.claves_docente.includes(currentKey)) isValid = true;
+            } else {
+                if (config.claves_alumno && config.claves_alumno.includes(currentKey)) isValid = true;
             }
-        } else {
-            // Verificar si la clave sigue en la lista de alumnos
-            if (config.claves_alumno && config.claves_alumno.includes(currentKey)) {
-                isValid = true;
+        }
+
+        // SI ES TEMPORAL, VERIFICAR TIEMPO (20 minutos de vida desde que entró = 1,200,000 milisegundos)
+        if (isValid && isTemporal) {
+            const loginTime = parseInt(localStorage.getItem('atiy_login_timestamp') || '0', 10);
+            const tiempoTranscurrido = Date.now() - loginTime;
+
+            if (tiempoTranscurrido > 1200000) {
+                isValid = false;
+                redirectToLogin("El tiempo para esta cuenta visitante/temporal ha expirado (20 min). ¡Gracias por probar el software!");
+                return;
             }
         }
 
         if (!isValid) {
             // ¡EXPULSIÓN INMEDIATA!
-            console.error(`⛔ Clave '${currentKey}' ya no es válida para rol '${role}'.`);
+            console.error(`⛔ Clave '${currentKey}' ya no es válida.`);
             redirectToLogin("Tu clave de acceso ha sido cambiada o revocada por el administrador.");
         } else {
-            console.log("✅ Verificación de seguridad: OK");
+            console.log(`✅ Verificación de seguridad: OK ${isTemporal ? '(Cuenta Temporal Activa)' : ''}`);
         }
 
     } catch (error) {
@@ -109,8 +125,36 @@ async function verifyAccess() {
     }
 }
 
-// Iniciar vigilancia
-console.log("🛡️ Sistema de seguridad activo. Vigilando clave...");
+// ==========================================
+// CONTROL DE INACTIVIDAD (10 MINUTOS)
+// ==========================================
+let inactivityTimer;
+const INACTIVITY_LIMIT_MS = 10 * 60 * 1000; // 10 minutos exactos
+
+function startInactivityTimer() {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(() => {
+        // Solo aplicar si estamos dentro de la app (protege de aplicar en login.html)
+        if (localStorage.getItem('atiy_key') && window.location.pathname.indexOf('login.html') === -1) {
+            redirectToLogin("La sesión se cerró automáticamente por inactividad prolongada (10 min). Por seguridad, vuelve a ingresar.");
+        }
+    }, INACTIVITY_LIMIT_MS);
+}
+
+// Escuchar eventos globales de actividad si NO estamos en el login
+if (window.location.pathname.indexOf('login.html') === -1) {
+    ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart'].forEach(eventName => {
+        document.addEventListener(eventName, startInactivityTimer, true);
+    });
+
+    // Arrancar el primer cronómetro si ya hay sesión al cargar index.html
+    if (localStorage.getItem('atiy_key')) {
+        startInactivityTimer();
+    }
+}
+
+// Iniciar vigilancia de la Nube Global
+console.log("🛡️ Sistema de seguridad activo. Vigilando clave y tokens...");
 setInterval(verifyAccess, CHECK_INTERVAL_MS);
 
 // Verificación inicial (con un pequeño delay para asegurar carga de módulos)
