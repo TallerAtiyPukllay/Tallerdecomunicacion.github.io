@@ -442,6 +442,325 @@ window.PREGUNTAS_GLOBALES = {
       ],
       "correcta": 2,
       "explicacion": "La coma hiperbólica va cuando se intercala un adjetivo o comentario: 'Trabajé, (cansado), todo el día'."
+    },
+    {
+      "pregunta": "¿Qué signo de puntuación se recomienda usar para separar elementos de una enumeración que ya incluyen comas?",
+      "tipo": "Punto y coma",
+      "opciones": [
+        "Los dos puntos (:)",
+        "El punto seguido (.)",
+        "El punto y coma (;)"
+      ],
+      "correcta": 2,
+      "explicacion": "El punto y coma separa elementos complejos en una lista, por ejemplo: 'Juan trajo pan, queso y jamón; María, las bebidas; y José, los vasos'."
+    },
+    {
+      "pregunta": "En la oración: 'Todos querían ir de viaje ___ pocos tenían dinero', ¿qué signo va antes del conector?",
+      "tipo": "Puntuación de conectores",
+      "opciones": [
+        "Dos puntos (:)",
+        "Coma (,)",
+        "Punto (.)"
+      ],
+      "correcta": 1,
+      "explicacion": "Antes de conjunciones adversativas breves como 'pero', 'mas', 'sino', se debe escribir una coma."
+    },
+    {
+      "pregunta": "¿Cuál es la puntuación correcta para esta cita textual?",
+      "tipo": "Citas",
+      "opciones": [
+        "El autor afirmó, «Todo fluye».",
+        "El autor afirmó: «Todo fluye».",
+        "El autor afirmó «Todo fluye»"
+      ],
+      "correcta": 1,
+      "explicacion": "Para introducir una cita textual se utilizan los dos puntos (:) antes de abrir las comillas."
+    },
+    {
+      "pregunta": "¿Qué signo se utiliza para desarrollar y desglosar un concepto o definición a continuación?",
+      "tipo": "Dos puntos",
+      "opciones": [
+        "Punto y coma (;)",
+        "Puntos suspensivos (...)",
+        "Dos puntos (:)"
+      ],
+      "correcta": 2,
+      "explicacion": "Los dos puntos se utilizan antes de una explicación o desglose de lo que se acaba de enunciar."
+    },
+    {
+      "pregunta": "Si un inciso (aclaración) dentro de una oración es muy ajeno al tema principal, lo ideal es usar:",
+      "tipo": "Signos delimitadores",
+      "opciones": [
+        "Comas (, ,)",
+        "Paréntesis ( )",
+        "Comillas (« »)"
+      ],
+      "correcta": 1,
+      "explicacion": "Cuando la aclaración supone una interrupción muy marcada y alejada del tema central, se prefiere el uso de paréntesis o rayas."
+    },
+    {
+      "pregunta": "¿En cuál de estos casos los puntos suspensivos están bien aplicados?",
+      "tipo": "Puntos suspensivos",
+      "opciones": [
+        "Compró manzanas, peras, uvas, etc...",
+        "Compró manzanas, peras, uvas...",
+        "Compró manzanas, peras, uvas..."
+      ],
+      "correcta": 1,
+      "explicacion": "Es un error frecuente escribir 'etc.' seguido de puntos suspensivos. Se usa uno u otro, nunca ambos."
+    },
+    {
+      "pregunta": "¿Cuál oración usa correctamente los signos de exclamación e interrogación mezclados?",
+      "tipo": "Signos mixtos",
+      "opciones": [
+        "¿¡Pero qué estás haciendo!?",
+        "¡¿Pero qué estás haciendo?",
+        "¿Pero qué estás haciendo!"
+      ],
+      "correcta": 0,
+      "explicacion": "Según la RAE, se pueden utilizar ambos signos a la vez para indicar sorpresa e interrogación (¿¡...!? o ¡¿...?!)."
+    },
+    {
+      "pregunta": "¿Qué puntuación llevaría el encabezado de un correo para una empresa?",
+      "tipo": "Dos puntos",
+      "opciones": [
+        "Estimados señores,",
+        "Estimados señores.",
+        "Estimados señores:"
+      ],
+      "correcta": 2,
+      "explicacion": "En español, el encabezamiento formal de cartas o correos siempre va seguido de dos puntos, no de coma (como en inglés)."
+    },
+    {
+      "pregunta": "Después de un cierre de interrogación (?), la siguiente palabra se escribe:",
+      "tipo": "Interrogación mayúscula",
+      "opciones": [
+        "Solo en minúscula",
+        "Con mayúscula inicial (si no hay coma)",
+        "Siempre con mayúscula inicial"
+      ],
+      "correcta": 1,
+      "explicacion": "Si después del (?) no hay una coma o punto y coma, actúa como punto final, por lo que la siguiente palabra va con mayúscula."
+    },
+    {
+      "pregunta": "En la frase 'El joven que te mencioné el de la camisa roja llegó tarde', ¿dónde van las comas?",
+      "tipo": "Coma explicativa",
+      "opciones": [
+        "El joven, que te mencioné el de la camisa, roja llegó tarde",
+        "El joven que te mencioné, el de la camisa roja, llegó tarde",
+        "El joven que te mencioné el de la camisa roja, llegó tarde"
+      ],
+      "correcta": 1,
+      "explicacion": "'el de la camisa roja' es un inciso aclaratorio y debe ir aislado entre comas explicativas."
+    },
+    {
+      "pregunta": "¿Cuál es la puntuación correcta?",
+      "tipo": "Punto y conectores",
+      "opciones": [
+        "Estudié mucho. Sin embargo, no aprobé.",
+        "Estudié mucho, Sin embargo no aprobé.",
+        "Estudié mucho sin embargo no aprobé."
+      ],
+      "correcta": 0,
+      "explicacion": "Conectores largos como 'Sin embargo' se recomiendan escribir después de punto y seguido, seguidos de una coma."
+    },
+    {
+      "pregunta": "¿Qué signo se utiliza para aislar fechas, lugares o traducciones dentro de un texto?",
+      "tipo": "Paréntesis",
+      "opciones": [
+        "Guiones (-)",
+        "Corchetes ([])",
+        "Paréntesis ()"
+      ],
+      "correcta": 2,
+      "explicacion": "Los paréntesis encierran datos precisos incidentales, como años, lugares, traducciones o siglas."
+    },
+    {
+      "pregunta": "¿Cuál es el uso de la coma hiperbática en la siguiente oración: 'En la casa de mi abuela todo es silencio'?",
+      "tipo": "Coma hiperbática",
+      "opciones": [
+        "En la casa de mi abuela todo es, silencio.",
+        "En la casa, de mi abuela, todo es silencio.",
+        "En la casa de mi abuela, todo es silencio."
+      ],
+      "correcta": 2,
+      "explicacion": "La coma señala que el complemento ('En la casa de mi abuela') se ha adelantado a su posición habitual."
+    },
+    {
+      "pregunta": "Cuando una oración está dentro de paréntesis, ¿dónde va el punto final?",
+      "tipo": "Paréntesis y punto",
+      "opciones": [
+        "Dentro del paréntesis: (Esto es un ejemplo.)",
+        "Fuera del paréntesis: (Esto es un ejemplo).",
+        "En ambos lugares: (Esto es un ejemplo.)."
+      ],
+      "correcta": 1,
+      "explicacion": "El punto que cierra el enunciado general siempre se coloca fuera del paréntesis o las comillas de cierre."
+    },
+    {
+      "pregunta": "Si vas a omitir una parte del texto original en una cita, debes usar:",
+      "tipo": "Corchetes textuales",
+      "opciones": [
+        "Puntos suspensivos libres: ...",
+        "Puntos suspensivos entre corchetes: [...]",
+        "Paréntesis vacíos: ()"
+      ],
+      "correcta": 1,
+      "explicacion": "Los tres puntos entre corchetes [...] indican que el transcriptor ha omitido intencionalmente un fragmento de la cita original."
+    },
+    {
+      "pregunta": "¿Cuándo NO se debe usar la coma?",
+      "tipo": "Uso incorrecto coma",
+      "opciones": [
+        "Entre el sujeto y el verbo de una oración principal.",
+        "Antes de las conjunciones adversativas (pero).",
+        "Para encerrar vocativos."
+      ],
+      "correcta": 0,
+      "explicacion": "Es un error grave ('coma criminal') separar con coma el sujeto del verbo o predicado (ej. incorrecto: 'El perro, come')."
+    },
+    {
+      "pregunta": "¿Cómo separarías correctamente dos oraciones independientes pero muy relacionadas semánticamente?",
+      "tipo": "Punto y coma",
+      "opciones": [
+        "Con una coma simple (,)",
+        "Con un punto y coma (;)",
+        "Con dos puntos (:)"
+      ],
+      "correcta": 1,
+      "explicacion": "El punto y coma es ideal para unir periodos o cláusulas gramaticalmente independientes pero con un estrecho vínculo lógico."
+    },
+    {
+      "pregunta": "Selecciona la oración puntuada correctamente alrededor de 'es decir':",
+      "tipo": "Conectores explicativos",
+      "opciones": [
+        "Estaba muy enfermo, es decir no podía ir.",
+        "Estaba muy enfermo es decir, no podía ir.",
+        "Estaba muy enfermo, es decir, no podía ir."
+      ],
+      "correcta": 2,
+      "explicacion": "Los conectores explicativos (es decir, esto es, o sea) siempre deben aislarse entre comas."
+    },
+    {
+      "pregunta": "La coma que sustituye a un verbo que ya se ha mencionado para no repetirlo se llama:",
+      "tipo": "Tipos de coma",
+      "opciones": [
+        "Coma hiperbática",
+        "Coma elíptica",
+        "Coma vocativa"
+      ],
+      "correcta": 1,
+      "explicacion": "La coma elíptica evita repeticiones: 'Yo estudio matemáticas; él, física'."
+    },
+    {
+      "pregunta": "¿Qué signo ortográfico se utiliza en matemáticas para señalar una división, y en texto normal para separar ejemplos aislados?",
+      "tipo": "Signos compartidos",
+      "opciones": [
+        "Guion largo",
+        "Signos de exclamación",
+        "Los dos puntos"
+      ],
+      "correcta": 2,
+      "explicacion": "Los dos puntos se figuran tanto como símbolo matemático de división (8 : 2 = 4) como para introducir ejemplos."
+    },
+    {
+      "pregunta": "Elige la opción que usa bien las comillas para resaltar una ironía o palabra extranjera:",
+      "tipo": "Uso de comillas",
+      "opciones": [
+        "Fue un «fail» total en su examen.",
+        "Fue un fail total en su examen.",
+        "Fue un fail «total» en su examen."
+      ],
+      "correcta": 0,
+      "explicacion": "Las comillas (latinas o inglesas) sirven para aislar palabras vulgares, extranjerismos o palabras con sentido irónico."
+    },
+    {
+      "pregunta": "¿Dónde ubicamos los signos de interrogación si solo una parte de la frase es pregunta?",
+      "tipo": "Interrogación parcial",
+      "opciones": [
+        "¿Si llegas tarde no podrás entrar a clase?",
+        "Si llegas tarde, ¿no podrás entrar a clase?",
+        "Si llegas tarde no podrás ¿entrar a clase?"
+      ],
+      "correcta": 1,
+      "explicacion": "Los signos de interrogación se colocan justo donde empieza la entonación interrogativa."
+    },
+    {
+      "pregunta": "¿Cuál oración está correctamente puntuada con punto y coma ante un conector?",
+      "tipo": "Punto y coma conectores",
+      "opciones": [
+        "Entrenó a diario duro; por consiguiente, ganó el campeonato.",
+        "Entrenó a diario duro, por consiguiente; ganó el campeonato.",
+        "Entrenó a diario duro; por consiguiente ganó el campeonato."
+      ],
+      "correcta": 0,
+      "explicacion": "Antes de conectores conclusivos (por consiguiente, por lo tanto) que enlazan oraciones largas, se recomienda el punto y coma."
+    },
+    {
+      "pregunta": "¿Se puede escribir una coma después de cerrar un signo de exclamación (!)?",
+      "tipo": "Puntuación combinada",
+      "opciones": [
+        "Sí, si la exclamación es parte de una enumeración.",
+        "Nunca. El signo de cierre actúa como punto absoluto.",
+        "Sí, pero solo si es coma hiperbática."
+      ],
+      "correcta": 0,
+      "explicacion": "Se puede escribir coma, punto y coma, o dos puntos detrás del (!). Lo único que NO se puede escribir detrás es un punto (.)."
+    },
+    {
+      "pregunta": "¿Cuál uso de dos puntos es INCORRECTO?",
+      "tipo": "Dos puntos errores",
+      "opciones": [
+        "Le dijo: 'No vayas'.",
+        "Los días son: lunes y martes.",
+        "Causas: lluvia y viento."
+      ],
+      "correcta": 1,
+      "explicacion": "Es incorrecto usar dos puntos entre una preposición/verbo y sus complementos si no se justifica. ('Los días son lunes y martes')."
+    },
+    {
+      "pregunta": "¿Qué comillas recomienda usar la RAE en primera instancia en los textos impresos?",
+      "tipo": "Tipos de comillas",
+      "opciones": [
+        "Las comillas inglesas (\"\")",
+        "Las comillas angulares o latinas («»)",
+        "Las comillas simples ('')"
+      ],
+      "correcta": 1,
+      "explicacion": "La RAE prefiere el uso de las comillas angulares (€« »€) en textos españoles, reservando las otras para entrecomillados internos."
+    },
+    {
+      "pregunta": "Señala la oración con una puntuación de cita correcta:",
+      "tipo": "Citas con un inciso",
+      "opciones": [
+        "«Me parece —dijo el abuelo—, que lloverá pronto».",
+        "«Me parece —dijo el abuelo, que lloverá pronto».",
+        "«Me parece, dijo el abuelo, que lloverá pronto»."
+      ],
+      "correcta": 0,
+      "explicacion": "Cuando se interrumpe una cita narrativa con un inciso del narrador, este debe aislarse con rayas (—)."
+    },
+    {
+      "pregunta": "Dentro de un paréntesis aclaratorio, si la aclaración de repente termina en una exclamación que debe cerrarse...",
+      "tipo": "Jerarquía de signos",
+      "opciones": [
+        "El signo (!) va junto al paréntesis: (... ¡sorpresa!).",
+        "Se elimina la exclamación porque el paréntesis es más fuerte.",
+        "El paréntesis engloba el punto final."
+      ],
+      "correcta": 0,
+      "explicacion": "Los signos afectivos como (!) y (?) tienen validez solo dentro de su propio inciso si están encerrados en un paréntesis."
+    },
+    {
+      "pregunta": "¿Qué ocurre si una oración que termina en abreviatura coincide con el final de una oración principal?",
+      "tipo": "Abreviaturas y punto final",
+      "opciones": [
+        "Se colocan dos puntos (p. ej., ...etc..).",
+        "El punto de la abreviatura sirve como punto final (no se dobla el punto).",
+        "Se escribe la abreviatura sin su punto para colocar el final."
+      ],
+      "correcta": 1,
+      "explicacion": "Ocurre una superposición. Si una palabra termina en punto abreviativo al final de un párrafo, ese mismo punto hace de punto final."
     }
   ],
   "avanzado": [
