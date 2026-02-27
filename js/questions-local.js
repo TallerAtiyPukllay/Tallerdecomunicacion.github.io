@@ -56,6 +56,280 @@ window.PREGUNTAS_GLOBALES = {
       ],
       "correcta": 1,
       "explicacion": "La coma explicativa va entre comas: 'Mi hermano, el ingeniero, llegará mañana'."
+    },
+    {
+      "pregunta": "¿Qué signos se utilizan para formular una pregunta directa?",
+      "tipo": "Signos de Interrogación",
+      "opciones": [
+        "Los signos de exclamación (¡!)",
+        "Los puntos suspensivos (...)",
+        "Los signos de interrogación (¿?)"
+      ],
+      "correcta": 2,
+      "explicacion": "En español, las preguntas directas deben abrirse (¿) y cerrarse (?) con signos de interrogación."
+    },
+    {
+      "pregunta": "¿Cómo se escribe correctamente una pregunta en español?",
+      "tipo": "Signos de Interrogación",
+      "opciones": [
+        "Solo con el signo al final: Cómo te llamas?",
+        "Con signo de apertura y de cierre: ¿Cómo te llamas?",
+        "Con dos signos al final: Cómo te llamas??"
+      ],
+      "correcta": 1,
+      "explicacion": "El español es uno de los pocos idiomas que exige abrir y cerrar los signos de interrogación."
+    },
+    {
+      "pregunta": "¿Qué signos se usan para expresar sorpresa, miedo o alegría?",
+      "tipo": "Signos de Exclamación",
+      "opciones": [
+        "Signos de exclamación (¡!)",
+        "Comillas («»)",
+        "Paréntesis ()"
+      ],
+      "correcta": 0,
+      "explicacion": "Los signos de exclamación o admiración (¡!) dan énfasis, emoción o sorpresa a una oración."
+    },
+    {
+      "pregunta": "¿Qué letra se debe escribir inmediatamente después de un punto seguido?",
+      "tipo": "Uso de Mayúsculas",
+      "opciones": [
+        "Cualquier letra minúscula",
+        "Una letra mayúscula inicial",
+        "Depende de la palabra"
+      ],
+      "correcta": 1,
+      "explicacion": "La regla ortográfica obliga a comenzar con letra mayúscula la palabra que sigue después de cualquier punto."
+    },
+    {
+      "pregunta": "¿Qué tipo de coma separa los elementos de una lista, como al comprar un mercado?",
+      "tipo": "Tipos de coma",
+      "opciones": [
+        "Coma enumerativa",
+        "Coma vocativa",
+        "Coma explicativa"
+      ],
+      "correcta": 0,
+      "explicacion": "La coma enumerativa separa series o listas: 'Compré pan, leche, huevos y queso'."
+    },
+    {
+      "pregunta": "¿Qué signo se coloca al final de un texto para darlo por concluido?",
+      "tipo": "Tipos de punto",
+      "opciones": [
+        "El punto seguido",
+        "El punto y aparte",
+        "El punto final"
+      ],
+      "correcta": 2,
+      "explicacion": "El punto final es el que marca el cierre total y definitivo de un escrito o documento."
+    },
+    {
+      "pregunta": "¿Qué signo se usa comúnmente antes de iniciar una enumeración anunciada?",
+      "tipo": "Dos puntos",
+      "opciones": [
+        "Dos puntos (:)",
+        "Punto y coma (;)",
+        "Puntos suspensivos (...)"
+      ],
+      "correcta": 0,
+      "explicacion": "Los dos puntos detienen el discurso para llamar la atención sobre lo que sigue, usualmente una enumeración."
+    },
+    {
+      "pregunta": "¿Se escribe un punto después de cerrar un signo de interrogación o exclamación?",
+      "tipo": "Uso del punto",
+      "opciones": [
+        "Sí, siempre",
+        "No, nunca",
+        "Solo si se cambia de párrafo"
+      ],
+      "correcta": 1,
+      "explicacion": "El signo de interrogación de cierre (?) y el de exclamación (!) ya actúan como punto final de la oración."
+    },
+    {
+      "pregunta": "En la frase 'María, ven aquí por favor', ¿qué función cumple la coma?",
+      "tipo": "Tipos de coma",
+      "opciones": [
+        "Coma enumerativa",
+        "Coma elíptica",
+        "Coma vocativa"
+      ],
+      "correcta": 2,
+      "explicacion": "Es una coma vocativa porque se utiliza para aislar el nombre de la persona a la que nos dirigimos."
+    },
+    {
+      "pregunta": "¿Cuántos puntos conforman exactamente los 'puntos suspensivos'?",
+      "tipo": "Puntos suspensivos",
+      "opciones": [
+        "Dos (..)",
+        "Tres (...)",
+        "Cuatro o más (....)"
+      ],
+      "correcta": 1,
+      "explicacion": "Los puntos suspensivos se escriben siempre con exactamente tres puntos (...), ni más ni menos."
+    },
+    {
+      "pregunta": "¿Para qué se suelen usar los puntos suspensivos al final de una oración?",
+      "tipo": "Puntos suspensivos",
+      "opciones": [
+        "Para cerrar el texto definitivamente",
+        "Para dejar un suspenso o asombro en la oración",
+        "Para corregir una falta de ortografía"
+      ],
+      "correcta": 1,
+      "explicacion": "Indican una pausa transitoria que expresa duda, temor, vacilación o suspenso."
+    },
+    {
+      "pregunta": "En la frase: 'Mis colores favoritos son azul, verde y rojo.', ¿lleva coma antes de la 'y'?",
+      "tipo": "Tipos de coma",
+      "opciones": [
+        "Sí, porque separa elementos",
+        "No, en enumeraciones simples la 'y' reemplaza a la última coma",
+        "Opcionalmente"
+      ],
+      "correcta": 1,
+      "explicacion": "En una enumeración plana, los conectores y, e, o, u, ni sustituyen a la última coma."
+    },
+    {
+      "pregunta": "¿Cómo iniciamos la primera palabra de un texto o escrito nuevo?",
+      "tipo": "Uso de Mayúsculas",
+      "opciones": [
+        "Con letra mayúscula obligatoriamente",
+        "Con letra minúscula",
+        "Con cursivas"
+      ],
+      "correcta": 0,
+      "explicacion": "Toda escritura o palabra que inicia un texto desde cero debe ir siempre con su primera letra en mayúscula."
+    },
+    {
+      "pregunta": "¿Cuál oración está escrita correctamente?",
+      "tipo": "Signos de Interrogación y Exclamación",
+      "opciones": [
+        "¡Qué frío hace hoy!",
+        "Qué frío hace hoy!",
+        "¡Qué frío hace hoy"
+      ],
+      "correcta": 0,
+      "explicacion": "Las frases exclamativas exigen iniciar con el signo de apertura y terminar con el de cierre."
+    },
+    {
+      "pregunta": "¿Qué signo marca una pausa en una lectura de un texto en voz alta?",
+      "tipo": "Tipos de coma",
+      "opciones": [
+        "La tilde",
+        "La coma",
+        "Las comillas"
+      ],
+      "correcta": 1,
+      "explicacion": "La coma representa gráficamente una pausa breve, que se respeta al hablar para dar sentido."
+    },
+    {
+      "pregunta": "En general, al escribir nombres propios (como Juan, Perú, Lima), usamos:",
+      "tipo": "Uso de Mayúsculas",
+      "opciones": [
+        "Letra mayúscula inicial",
+        "Letra minúscula",
+        "Punto seguido entre letras"
+      ],
+      "correcta": 0,
+      "explicacion": "Los nombres propios siempre se escriben con mayúscula inicial, sin importar su posición."
+    },
+    {
+      "pregunta": "¿Qué signo usamos al final del saludo de una carta formal ('Estimado profesor')?",
+      "tipo": "Dos puntos",
+      "opciones": [
+        "Punto final (.)",
+        "Punto y coma (;)",
+        "Dos puntos (:)"
+      ],
+      "correcta": 2,
+      "explicacion": "En el español, el saludo de las cartas o correos formales se cierra siempre con dos puntos."
+    },
+    {
+      "pregunta": "¿Qué signo se utiliza para indicar que una lista no ha terminado y sigue abierta?",
+      "tipo": "Puntos suspensivos",
+      "opciones": [
+        "Una coma (,)",
+        "Puntos suspensivos (...)",
+        "Un punto y coma (;)"
+      ],
+      "correcta": 1,
+      "explicacion": "Se usan tres puntos suspensivos para señalar que una enumeración podría continuar indefinidamente."
+    },
+    {
+      "pregunta": "¿Cuál oración tiene la puntuación correcta?",
+      "tipo": "Interrogación",
+      "opciones": [
+        "¿Dónde compraste eso.",
+        "¿Dónde compraste eso?",
+        "Dónde compraste eso?"
+      ],
+      "correcta": 1,
+      "explicacion": "Se necesita el signo de abrir (¿) y el de cerrar (?)."
+    },
+    {
+      "pregunta": "¿Cuál de estas oraciones está correctamente escrita luego del uso de un punto?",
+      "tipo": "Tipos de punto mayúscula",
+      "opciones": [
+        "Salí temprano. me fui al cine.",
+        "Salí temprano. Me fui al cine.",
+        "Salí temprano . Me fui al cine."
+      ],
+      "correcta": 1,
+      "explicacion": "El punto no lleva espacio antes de él, y la primera letra de la oración que sigue va en mayúscula."
+    },
+    {
+      "pregunta": "¿Qué signos encierran las palabras exactas que dijo otra persona?",
+      "tipo": "Comillas",
+      "opciones": [
+        "Paréntesis ()",
+        "Corchetes []",
+        "Comillas («» o \"\")"
+      ],
+      "correcta": 2,
+      "explicacion": "Las comillas indican que se trata de una cita textual, es decir, lo mismo que se dijo u oyó."
+    },
+    {
+      "pregunta": "¿Cuál lista está bien puntuada?",
+      "tipo": "Tipos de coma",
+      "opciones": [
+        "Carro moto bicicleta y tren",
+        "Carro, moto, bicicleta y tren",
+        "Carro, moto, bicicleta, y tren"
+      ],
+      "correcta": 1,
+      "explicacion": "La lista correcta separa los elementos con coma, excepto el último que antecede al conector."
+    },
+    {
+      "pregunta": "Después de dos puntos (:), cuando se empieza una lista horizontal sencilla, ¿se debe iniciar con mayúscula?",
+      "tipo": "Dos puntos",
+      "opciones": [
+        "No, por regla general va con minúscula",
+        "Sí, todo va con mayúscula"
+      ],
+      "correcta": 0,
+      "explicacion": "La regla general dice que si lo que sigue a los dos puntos es una simple enumeración, va con letra minúscula."
+    },
+    {
+      "pregunta": "¿Qué signo se suele usar dentro de algunos textos matemáticos, pero también para encerrar aclaraciones muy lejanas del tema?",
+      "tipo": "Paréntesis",
+      "opciones": [
+        "Las comillas",
+        "Los paréntesis ()",
+        "Los puntos suspensivos"
+      ],
+      "correcta": 1,
+      "explicacion": "Los paréntesis introducen incisos aclaratorios o precisiones accesorias al tema principal."
+    },
+    {
+      "pregunta": "¿Qué signo se usa comúnmente en las abreviaturas (ej: Sr., Dra.)?",
+      "tipo": "Uso del punto",
+      "opciones": [
+        "El punto",
+        "La coma",
+        "Los dos puntos"
+      ],
+      "correcta": 0,
+      "explicacion": "El punto se usa para indicar que hemos abreviado una palabra omitiendo algunas de sus letras."
     }
   ],
   "intermedio": [
