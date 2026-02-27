@@ -1,0 +1,686 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atiy Pukllay v1.0</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Google Fonts: Merriweather (headings) + Lato (body) -->
+    <!-- Fonts configured in css/styles.css -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/scroll-btn.css">
+    <link rel="stylesheet" href="css/scroll-mobile.css">
+    <link rel="stylesheet" href="css/responsive-utils.css">
+
+    <!-- Favicon para evitar error 404 y mejorar estética -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="spinner"></div>
+            <p class="preloader-text">⏳ Cargando suite educativa...</p>
+        </div>
+    </div>
+
+    <!-- Navbar de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center" style="cursor: pointer;"
+                onclick="mostrarPantalla('biblioteca'); return false;">
+                <div class="me-2 bg-white rounded-circle shadow-sm d-flex align-items-center justify-content-center"
+                    style="width: 45px; height: 45px;">
+                    <i class="bi bi-journal-text" style="font-size: 1.5rem; color: #4361ee;"></i>
+                </div>
+                <div style="line-height: 1;">
+                    <span style="font-family: 'Merriweather', serif; font-size: 1.4rem; font-weight: 700;">
+                        <span style="color: #4361ee;">Atiy</span> <span style="color: #FF6B6B;">Pukllay</span>
+                    </span>
+
+                    <span style="
+                background-color: #34495e; 
+                color: white; 
+                padding: 2px 8px; 
+                border-radius: 4px; 
+                font-size: 0.7rem; 
+                font-weight: 600; 
+                vertical-align: text-top;
+                margin-left: 4px;
+                display: inline-block;">
+                        v1.0
+                    </span>
+
+                    <span
+                        style="font-size: 0.65rem; color: #6c757d; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; display: block; margin-top: 2px;">
+                        Suite Educativa
+                    </span>
+                </div>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="mostrarPantalla('biblioteca'); return false;">📚
+                            Biblioteca</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="mostrarPantalla('practica'); return false;">✏️
+                            Práctica</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"
+                            onclick="resetearEvaluacion(); mostrarPantalla('evaluacion'); return false;">📝
+                            Evaluación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="mostrarPantalla('progreso'); return false;">📊
+                            Progreso</a>
+                    </li>
+
+                    <!-- PERFIL DE USUARIO -->
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0 d-flex align-items-center">
+                        <div class="dropdown">
+                            <button
+                                class="btn btn-outline-primary btn-sm dropdown-toggle d-flex align-items-center gap-2"
+                                type="button" id="userMenuBtn" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="border-radius: 20px; padding: 5px 15px;">
+                                <i class="bi bi-person-circle"></i>
+                                <span id="nav-user-name" style="font-weight: 600;">Estudiante</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="userMenuBtn">
+                                <li>
+                                    <h6 class="dropdown-header" id="nav-user-section">Salón: --</h6>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item text-danger" href="#" onclick="cerrarSesion()">
+                                        <i class="bi bi-box-arrow-right me-2"></i> Cerrar Sesión
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </li>
+            </div>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <!-- PANTALLA 1: BIBLIOTECA (TEORÍA) - MASTER-DETAIL -->
+        <div id="pantalla-biblioteca" class="pantalla active">
+            <div class="container px-1 pb-4 container-responsive">
+                <div class="row g-3 bib-row-fixed">
+                    <!-- Columna de Navegación (Menú de Signos) -->
+                    <div class="col-12 col-md-3 order-md-1 bib-col-menu">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-white border-bottom text-center">
+                                <h5 class="mb-0">📚 Signos de puntuación</h5>
+                            </div>
+                            <div class="list-group list-group-flush" id="bib-menu">
+                                <!-- Botones generados por JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna de Contenido (Detalle) -->
+                    <div class="col-12 col-md-9 order-md-2 bib-col-content">
+                        <div class="card border-0 shadow-sm bib-content-card">
+                            <div class="card-body" id="bib-content">
+                                <!-- Contenido inyectado por JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA 2: PRÁCTICA (DRAG & DROP) -->
+        <div id="pantalla-practica" class="pantalla">
+            <div class="container pt-0 pb-5">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <!-- Título diferenciado -->
+                        <h1 class="display-6 fw-bold mb-3 d-block d-xxl-none">✏️ Taller de práctica (toca dos
+                            veces)</h1>
+                        <h1 class="display-6 fw-bold mb-3 d-none d-xxl-block">✏️ Taller de práctica (arrastra y suelta)
+                        </h1>
+
+                        <!-- Texto Lead -->
+                        <p class="lead text-muted mb-3 d-block d-xxl-none">Selecciona el signo correcto y completa las
+                            oraciones.</p>
+                        <p class="lead text-muted mb-3 d-none d-xxl-block">Arrastra los signos de puntuación a los
+                            espacios en blanco para
+                            completar correctamente las oraciones.</p>
+
+                        <!-- Instrucciones Móvil/Tablet/Laptop (Tap) -->
+                        <div class="alert alert-info mb-3 d-block d-xxl-none">
+                            <strong>📌 Instrucciones:</strong>
+                            <br>1. <strong>Toca un signo</strong> para seleccionarlo (se pondrá naranja).
+                            <br>2. <strong>Toca un espacio vacío</strong> para colocarlo.
+                        </div>
+
+                        <!-- Instrucciones Escritorio Grande (Drag) -->
+                        <div class="alert alert-info mb-3 d-none d-xxl-block">
+                            <strong>📌 Instrucciones:</strong>
+                            <br>Haz clic en un signo y arrástralo sin soltar hasta el espacio vacío correspondiente.
+                        </div>
+
+                        <!-- Caja de Herramientas -->
+                        <div class="mb-3 p-4 bg-light rounded border-2" style="border-color: #2563eb;">
+                            <!-- Título caja herramientas diferenciado -->
+                            <h5 class="mb-3 fw-bold d-block d-xxl-none">🛠️ Signos disponibles (toca uno):</h5>
+                            <h5 class="mb-3 fw-bold d-none d-xxl-block">🛠️ Signos disponibles (arrastra uno):</h5>
+
+                            <div id="toolbox" class="d-flex flex-wrap justify-content-center gap-3">
+                                <div class="signo-draggable" draggable="true" data-signo=".">
+                                    <div class="signo-label">Punto</div>
+                                    <div class="signo-symbol">.</div>
+                                </div>
+                                <div class="signo-draggable" draggable="true" data-signo=",">
+                                    <div class="signo-label">Coma</div>
+                                    <div class="signo-symbol">,</div>
+                                </div>
+                                <div class="signo-draggable" draggable="true" data-signo=";">
+                                    <div class="signo-label">Punto y Coma</div>
+                                    <div class="signo-symbol">;</div>
+                                </div>
+                                <div class="signo-draggable" draggable="true" data-signo=":">
+                                    <div class="signo-label">Dos Puntos</div>
+                                    <div class="signo-symbol">:</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ejercicio de Práctica -->
+                        <div class="mb-5 p-3 bg-white border rounded shadow-sm">
+                            <h5 class="mb-4 fw-bold">✍️ Completa las oraciones con los signos correctos:</h5>
+
+                            <!-- Oración 1 -->
+                            <div class="sentence-item mb-4">
+                                <div class="sentence-number">1.</div>
+                                <div class="sentence-text">
+                                    Mi hermana vive en Madrid<span class="drop-zone" data-correct=".">____</span>
+                                </div>
+                            </div>
+
+                            <!-- Oración 2 -->
+                            <div class="sentence-item mb-4">
+                                <div class="sentence-number">2.</div>
+                                <div class="sentence-text">
+                                    Para preparar un café necesitas<span class="drop-zone" data-correct=":">____</span>
+                                    agua caliente<span class="drop-zone" data-correct=",">____</span> café molido y una
+                                    taza<span class="drop-zone" data-correct=".">____</span>
+                                </div>
+                            </div>
+
+                            <!-- Oración 3 -->
+                            <div class="sentence-item mb-4">
+                                <div class="sentence-number">3.</div>
+                                <div class="sentence-text">
+                                    El viaje fue largo<span class="drop-zone" data-correct=";">____</span> sin
+                                    embargo<span class="drop-zone" data-correct=",">____</span> muy divertido<span
+                                        class="drop-zone" data-correct=".">____</span>
+                                </div>
+                            </div>
+
+                            <!-- Oración 4 -->
+                            <div class="sentence-item mb-4">
+                                <div class="sentence-number">4.</div>
+                                <div class="sentence-text">
+                                    Los ingredientes son<span class="drop-zone" data-correct=":">____</span> harina<span
+                                        class="drop-zone" data-correct=",">____</span> huevos<span class="drop-zone"
+                                        data-correct=",">____</span> azúcar y mantequilla<span class="drop-zone"
+                                        data-correct=".">____</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botones de Acción -->
+                        <div class="d-flex gap-3 justify-content-center mb-4 flex-wrap">
+                            <button id="verify-btn" class="btn btn-success btn-lg px-5">✓ Verificar respuestas</button>
+                            <button id="reset-btn" class="btn btn-warning btn-lg px-5">↻ Reiniciar ejercicio</button>
+                        </div>
+
+                        <!-- Retroalimentación -->
+                        <div id="feedback-practica" class="alert d-none" role="alert"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA 3: EVALUACIÓN (QUIZ) -->
+        <div id="pantalla-evaluacion" class="pantalla">
+            <div id="quiz-container">
+                <!-- PANTALLA DE INICIO DEL QUIZ -->
+                <div id="quiz-start-screen" class="quiz-screen active">
+                    <div class="container-fluid min-vh-80 d-flex align-items-center justify-content-center">
+                        <div class="welcome-content text-center">
+                            <div class="logo mb-4">⁋</div>
+                            <h1 class="display-3 fw-bold mb-3">Evaluación</h1>
+                            <p class="subtitle fs-5 text-muted mb-5">Demuestra tus conocimientos en puntuación</p>
+
+                            <div class="level-selector mb-5">
+                                <h3 class="mb-4">Selecciona el nivel:</h3>
+                                <div class="level-buttons row g-3 justify-content-center">
+                                    <div class="col-12 col-sm-6 col-md-4">
+                                        <button class="level-btn btn btn-outline-primary w-100 py-3"
+                                            data-level="basico">
+                                            <div class="level-name fw-bold">🟢 Básico</div>
+                                            <small class="level-desc text-muted d-block">5 preguntas</small>
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-4">
+                                        <button class="level-btn btn btn-outline-primary w-100 py-3"
+                                            data-level="intermedio">
+                                            <div class="level-name fw-bold">🔵 Intermedio</div>
+                                            <small class="level-desc text-muted d-block">10 preguntas</small>
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-4">
+                                        <button class="level-btn btn btn-outline-primary w-100 py-3"
+                                            data-level="avanzado">
+                                            <div class="level-name fw-bold">🔴 Avanzado</div>
+                                            <small class="level-desc text-muted d-block">15 preguntas</small>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button id="quiz-start-btn" class="btn btn-primary btn-lg px-5 py-3" disabled
+                                onclick="console.log('1. Se hizo clic en Iniciar'); if(window.iniciarTimerQuiz) window.iniciarTimerQuiz();">Comenzar
+                                test
+                                ▶</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANTALLA DE JUEGO DEL QUIZ -->
+                <div id="quiz-game-screen" class="quiz-screen w-100">
+                    <div class="container-fluid pb-4 container-responsive">
+                        <div class="game-header mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-12 col-md-7">
+                                    <div class="game-info d-flex justify-content-start flex-wrap gap-3 mb-3 mb-md-0">
+                                        <div class="info-item text-center">
+                                            <span class="label d-block text-muted small">Pregunta</span>
+                                            <span id="current-question" class="value fs-5 fw-bold">1</span>
+                                        </div>
+                                        <div class="info-item text-center">
+                                            <span class="label d-block text-muted small">Aciertos</span>
+                                            <span id="current-score" class="value fs-5 fw-bold text-success">0</span>
+                                        </div>
+                                        <div class="info-item text-center">
+                                            <span class="label d-block text-muted small">Racha</span>
+                                            <span id="streak" class="value fs-5 fw-bold text-warning">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-5">
+                                    <div class="d-flex align-items-center justify-content-end w-100">
+                                        <!-- Progress & Controls & Timer (Single Row) -->
+                                        <div
+                                            class="d-flex align-items-center justify-content-between gap-2 w-100 bg-white p-2 rounded shadow-sm border">
+
+                                            <!-- Timer (Left) -->
+                                            <div class="d-flex align-items-center pe-2 border-end me-1">
+                                                <i class="bi bi-clock-history me-1 text-primary"></i>
+                                                <span id="quiz-timer-text" class="fw-bold text-dark font-monospace"
+                                                    style="font-size: 1rem;">00:00</span>
+                                            </div>
+
+                                            <!-- Progress Bar (Center) -->
+                                            <div class="progress-container flex-grow-1 position-relative mx-1"
+                                                style="height: 10px; background-color: #e9ecef; border-radius: 10px; overflow: hidden;">
+                                                <div id="progress-fill" class="progress-bar bg-success gradient-success"
+                                                    role="progressbar"
+                                                    style="width: 0%; height: 100%; transition: width 0.5s ease;"
+                                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <span id="progress-text" class="small fw-bold text-muted"
+                                                style="font-size: 0.8em; min-width: 30px; text-align: right;">0%</span>
+
+                                            <!-- Controls (Right) -->
+                                            <div class="header-controls d-flex gap-1 ps-1 border-start ms-1">
+                                                <button id="sound-toggle-btn"
+                                                    class="btn btn-sm btn-link text-secondary text-decoration-none p-0 px-1"
+                                                    title="Sonido" style="font-size: 1.1rem;">🔊</button>
+                                                <button id="auto-advance-btn"
+                                                    class="btn btn-sm btn-link text-secondary text-decoration-none p-0 px-1"
+                                                    title="Auto-avance" style="font-size: 1.1rem;">🔁</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="game-content card shadow-lg p-5 mb-4">
+                            <div class="question-section mb-4">
+                                <span id="question-type" class="badge bg-info mb-3">✍️ Ortografía</span>
+                                <h2 id="question-text" class="question-text h3 fw-bold">Pregunta aquí...</h2>
+                            </div>
+
+                            <div id="options-container" class="options-container row g-3 mb-4">
+                            </div>
+
+                            <div id="feedback" class="feedback-msg hidden mb-0" role="alert">
+                                <div id="feedback-result" class="feedback-result"></div>
+                                <div id="feedback-explanation" class="feedback-explanation hidden"></div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="d-flex flex-column flex-sm-row gap-2 justify-content-center align-items-center flex-wrap">
+                            <button id="continue-btn" class="btn btn-primary d-none" style="min-width:140px;">Continuar
+                                ▶</button>
+                            <small id="auto-adv-msg" class="text-muted d-none"
+                                style="white-space:normal; text-align:center; width:100%;">🔁 Activado: las preguntas
+                                avanzan automáticamente</small>
+                            <button class="btn btn-outline-danger" onclick="salirJuego()" style="min-width:100px;">⛔
+                                Salir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANTALLA DE RESULTADOS DEL QUIZ -->
+                <div id="quiz-result-screen" class="quiz-screen">
+                    <div class="container-fluid min-vh-75 d-flex align-items-center justify-content-center py-0">
+                        <div class="result-content text-center" style="max-width: 600px;">
+                            <div class="result-badge mb-4">
+                                <span id="result-emoji" class="display-1">🎉</span>
+                            </div>
+
+                            <h2 id="result-title" class="display-5 fw-bold mb-4">¡Excelente trabajo!</h2>
+
+                            <div class="result-stats row g-3 mb-4">
+                                <div class="col-6 col-md-3">
+                                    <div
+                                        class="stat-box card shadow-sm h-100 d-flex flex-column justify-content-center p-3">
+                                        <span class="stat-label text-muted small mb-2">🏁 Puntaje</span>
+                                        <span class="stat-value fs-4 fw-bold text-primary" id="score-final">0</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div
+                                        class="stat-box card shadow-sm h-100 d-flex flex-column justify-content-center p-3">
+                                        <span class="stat-label text-muted small mb-2">📊 %</span>
+                                        <span class="stat-value fs-4 fw-bold text-success"
+                                            id="percentage-final">0%</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div
+                                        class="stat-box card shadow-sm h-100 d-flex flex-column justify-content-center p-3">
+                                        <span class="stat-label text-muted small mb-2">🔥 Racha</span>
+                                        <span class="stat-value fs-4 fw-bold text-warning" id="best-streak">0</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div
+                                        class="stat-box card shadow-sm h-100 d-flex flex-column justify-content-center p-3">
+                                        <span class="stat-label text-muted small mb-2">⏱️ Tiempo</span>
+                                        <span class="stat-value fs-4 fw-bold text-info" id="time-final">00:00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p id="mensaje-final" class="lead text-muted mb-4"></p>
+
+                            <div class="result-buttons d-grid gap-2 d-sm-flex justify-content-sm-center">
+                                <button class="btn btn-primary btn-lg"
+                                    onclick="console.log('Retry clicked'); segundosTotales = 0; if(window.iniciarTimerQuiz) window.iniciarTimerQuiz(); reiniciarJuego()">↺
+                                    Intentar de
+                                    nuevo</button>
+                                <button class="btn btn-outline-secondary btn-lg" onclick="volverInicioQuiz()">📝 Volver
+                                    a evaluación</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA 4: PROGRESO (ESTADÍSTICAS) -->
+        <div id="pantalla-progreso" class="pantalla">
+            <div class="container pt-0 pb-5">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="display-6 fw-bold mb-4">📊 Tu progreso y estadísticas</h1>
+                        <p class="lead text-muted mb-5">Sigue tu evolución en los quizzes realizados.</p>
+
+                        <!-- Tarjetas de Estadísticas -->
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card shadow-sm h-100 text-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-muted">🏆 Mejor puntaje</h6>
+                                        <p class="card-text display-5 fw-bold text-primary" id="stat-best-score">-</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card shadow-sm h-100 text-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-muted">📈 Promedio</h6>
+                                        <p class="card-text display-5 fw-bold text-success" id="stat-avg-score">-</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card shadow-sm h-100 text-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-muted">⭐ Nivel favorito</h6>
+                                        <p class="card-text display-5 fw-bold text-warning" id="stat-fav-level">-</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card shadow-sm h-100 text-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-muted">📋 Total realizados</h6>
+                                        <p class="card-text display-5 fw-bold text-info" id="stat-total-quizzes">-</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gráfico de Evolución -->
+                        <div class="row">
+                            <div class="col-lg-10 mx-auto">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">📉 Evolución de puntajes</h5>
+                                        <canvas id="grafico-evolucion" style="max-height: 400px;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NUEVO: RANKING POR SECCIÓN (CLOUD) -->
+                        <div class="row mt-5">
+                            <div class="col-lg-10 mx-auto">
+                                <div class="card shadow-sm border-0">
+                                    <div
+                                        class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <h5 class="mb-0 fw-bold text-primary">🏆 Tabla de Líderes</h5>
+                                            <span class="badge bg-primary" id="ranking-section-badge">Tu Salón</span>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary"
+                                            onclick="window.cargarRankingCloud()">
+                                            🔄 Actualizar
+                                        </button>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover align-middle mb-0">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th scope="col" class="ps-4">#</th>
+                                                        <th scope="col">Estudiante</th>
+                                                        <th scope="col">Nivel</th>
+                                                        <th scope="col" class="text-center">Puntaje</th>
+                                                        <th scope="col" class="text-end pe-4">Tiempo</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="ranking-table-body">
+                                                    <!-- Cargando... -->
+                                                    <tr>
+                                                        <td colspan="5" class="text-center py-5">
+                                                            <div class="spinner-border text-primary" role="status">
+                                                                <span class="visually-hidden">Cargando...</span>
+                                                            </div>
+                                                            <p class="mt-2 text-muted small">Conectando con la nube...
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-light text-center py-2">
+                                        <small class="text-muted">Mostrando los mejores puntajes de tu sección</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botón Limpiar Datos -->
+                        <div class="text-center mt-5">
+                            <button id="clear-data-btn" class="btn btn-outline-danger">🗑️ Limpiar datos de
+                                progreso</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer sticky -->
+    <footer class="footer mt-auto py-4 bg-dark text-white text-center">
+        <div class="container">
+            <p class="mb-1">&copy; 2026 <span class="fw-bold">Atiy Pukllay</span>. Todos los derechos reservados.</p>
+            <p class="mb-0 small text-white-50">Autora: <span class="text-white fw-medium">Nohimy Edith Carrasco
+                    Paredes</span></p>
+        </div>
+    </footer>
+
+    <!-- SweetAlert2 (Para alertas bonitas y centradas) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/biblioteca-render.js"></script>
+    <script type="module" src="js/questions.js"></script> <!-- Ahora es un Módulo -->
+    <script src="js/sounds.js"></script>
+    <script src="js/suite-nav.js"></script>
+    <script src="js/practica.js"></script>
+    <script src="js/progreso.js"></script>
+    <script src="js/chart.min.js"></script>
+    <script src="js/quiz-timer.js"></script>
+    <script type="module" src="js/progreso-cloud.js"></script>
+    <script type="module" src="js/setup-security.js"></script> <!-- SCRIPT TEMPORAL DE SEGURIDAD -->
+    <script src="js/main.js"></script>
+    <script src="js/ui-ux.js"></script>
+    <script src="js/confetti.js"></script>
+    <script type="module" src="js/security.js"></script> <!-- Seguridad en Tiempo Real (NUBE) -->
+
+    <script>
+        // Inicialización de la Suite
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Esperar a que window.cargarPreguntas esté disponible (porque es módulo)
+            let intentos = 0;
+            while (typeof window.cargarPreguntas !== 'function' && intentos < 50) {
+                await new Promise(r => setTimeout(r, 100));
+                intentos++;
+            }
+
+            if (typeof window.cargarPreguntas === 'function') {
+                await window.cargarPreguntas();
+            } else {
+                console.error("No se pudo cargar el módulo de preguntas.");
+            }
+
+            await initializeGame();
+            initializePractica();
+            initializeProgreso();
+            initBiblioteca();
+            console.log('✓ Suite de Aprendizaje cargada correctamente');
+
+            // Restaurar última pantalla visitada
+            const lastScreen = sessionStorage.getItem('atiy_last_screen');
+            if (lastScreen) {
+                console.log("📍 Restaurando sesión en:", lastScreen);
+                // Pequeño delay para asegurar que todo el DOM esté listo
+                setTimeout(() => mostrarPantalla(lastScreen), 100);
+            }
+
+            // Hide preloader
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }, 800);
+            }
+
+            // Scroll to Top Logic
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        scrollToTopBtn.classList.add('show');
+                    } else {
+                        scrollToTopBtn.classList.remove('show');
+                    }
+                });
+
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+
+        // Función auxiliar para volver a la pantalla de inicio del quiz
+        function volverInicioQuiz() {
+            const startScreen = document.getElementById('quiz-start-screen');
+            const gameScreen = document.getElementById('quiz-game-screen');
+            const resultScreen = document.getElementById('quiz-result-screen');
+
+            startScreen.classList.add('active');
+            gameScreen.classList.remove('active');
+            resultScreen.classList.remove('active');
+
+            // Resetear niveles
+            document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('quiz-start-btn').disabled = true;
+        }
+    </script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="shadow-lg" title="Volver arriba">
+        <i class="bi bi-arrow-up-short"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

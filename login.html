@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Restringido - Atiy Pukllay</title>
+    <link rel="stylesheet" href="css/login.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="glass-card">
+            <div class="logo-area">
+                <div class="icon-lock">🔒</div>
+                <h1>Atiy Pukllay</h1>
+                <p>Software Educativo Premium</p>
+            </div>
+
+            <!-- CAMPO 1: NOMBRE DEL ESTUDIANTE -->
+            <div class="input-group">
+                <label for="studentName" style="font-size: 0.9rem;">Nombre del Estudiante</label>
+                <div class="password-container">
+                    <input type="text" id="studentName" placeholder="Ej. Juan Pérez" autocomplete="name"
+                        style="padding-right: 15px;"> <!-- Sin icono toggle -->
+                </div>
+            </div>
+
+            <!-- CAMPO 2: SECCIÓN / SALÓN -->
+            <div class="input-group">
+                <label for="studentSection" style="font-size: 0.9rem;">Sección / Grado</label>
+                <div class="password-container" style="background: white;">
+                    <select id="studentSection" style="
+                        width: 100%;
+                        border: none;
+                        background: transparent;
+                        padding: 12px 15px;
+                        font-family: 'Outfit', sans-serif;
+                        font-size: 1rem;
+                        color: #333;
+                        cursor: pointer;
+                        outline: none;
+                    ">
+                        <option value="" disabled selected>Selecciona tu salón...</option>
+                        <option value="C1">Salón C1</option>
+                        <option value="C2">Salón C2</option>
+                        <option value="C3">Salón C3</option>
+                        <option value="C4">Salón C4</option>
+                        <option value="C5">Salón C5</option>
+                        <option value="C6">Salón C6</option>
+                        <option value="C7">Salón C7</option>
+                        <option value="C8">Salón C8</option>
+                        <option value="C9">Salón C9</option>
+                        <option value="" disabled>──────────</option>
+                        <option value="DOCENTE" style="color:#d63384; font-weight:bold;">🎓 Soy Docente</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- CAMPO 3: LLAVE DE ACCESO -->
+            <div class="input-group">
+                <label for="accessKey" style="font-size: 0.9rem;">Llave de Acceso</label>
+                <div class="password-container">
+                    <input type="password" id="accessKey" placeholder="Ingrese el código..." autocomplete="off">
+                    <span id="togglePassword" class="toggle-icon">👁️</span>
+                </div>
+            </div>
+
+            <button id="btnLogin" class="btn-primary">
+                <span id="btnText">VALIDAR CÓDIGO</span>
+                <div id="loader" class="loader" style="display:none;"></div>
+            </button>
+
+            <p id="statusMsg" class="status-msg"></p>
+
+            <div class="footer-info">
+                <p>Estado del Servidor: <span id="serverStatus" class="status-indicator checking">Verificando...</span>
+                </p>
+                <p class="copyright">© 2026 Atiy Pukllay</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK (Opcional, preparado para futuro) -->
+    <!-- <script type="module" src="js/firebase-config.js"></script> -->
+    <script type="module" src="js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+/* Responsive container sizing: 85% on desktop, 100% on mobile */
+@media (min-width: 992px) {
+    .container-responsive {
+        max-width: 85% !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .container-responsive {
+        max-width: 100% !important;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

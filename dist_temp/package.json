@@ -1,0 +1,25 @@
+{
+    "name": "atiy-pukllay",
+    "version": "1.0.0",
+    "description": "Aplicación de escritorio para Atiy Pukllay",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "dist": "electron-packager . --overwrite --platform=win32 --arch=x64 --out=dist --prune=true --icon=assets/icon.ico"
+    },
+    "author": "User",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "^33.2.1",
+        "electron-builder": "^25.1.8",
+        "electron-packager": "^17.1.2",
+        "fs-extra": "^11.3.3",
+        "javascript-obfuscator": "^5.3.0"
+    },
+    "build": {
+        "appId": "com.atiypukllay.app",
+        "win": {
+            "target": "nsis"
+        }
+    }
+}
