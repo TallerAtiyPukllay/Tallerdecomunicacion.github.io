@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Restringido - Atiy Pukllay</title>
+    <link rel="stylesheet" href="css/login.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Silenciador de Consola para Producción -->
+    <script>
+        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+            console.log = function () { };
+            console.warn = function () { };
+            console.info = function () { };
+        }
+    </script>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="glass-card">
+            <div class="logo-area">
+                <div class="icon-lock">🔒</div>
+                <h1>Atiy Pukllay</h1>
+                <p>Software Educativo Premium</p>
+            </div>
+
+            <!-- CAMPO 1: NOMBRE DEL ESTUDIANTE -->
+            <div class="input-group">
+                <label for="studentName" style="font-size: 0.9rem;">Nombre del Estudiante</label>
+                <div class="password-container">
+                    <input type="text" id="studentName" placeholder="Ej. Juan Pérez" autocomplete="name"
+                        style="padding-right: 15px;"> <!-- Sin icono toggle -->
+                </div>
+            </div>
+
+            <!-- CAMPO 2: CÓDIGO DE CLASE -->
+            <div class="input-group">
+                <label for="studentSection" style="font-size: 0.9rem;">Código de la Clase</label>
+                <div class="password-container">
+                    <input type="text" id="studentSection" placeholder="Ej. LENGUAJE-A1" autocomplete="off"
+                        style="text-transform: uppercase;">
+                </div>
+            </div>
+
+            <!-- CAMPO 3: LLAVE DE ACCESO -->
+            <div class="input-group">
+                <label for="accessKey" style="font-size: 0.9rem;">Llave de Acceso</label>
+                <div class="password-container">
+                    <input type="password" id="accessKey" placeholder="Ingrese el código..." autocomplete="off">
+                    <span id="togglePassword" class="toggle-icon">👁️</span>
+                </div>
+            </div>
+
+            <button id="btnLogin" class="btn-primary">
+                <span id="btnText">VALIDAR CÓDIGO</span>
+                <div id="loader" class="loader" style="display:none;"></div>
+            </button>
+
+            <div style="text-align: center; margin: 15px 0; color: #6b7280; font-size: 0.9em; position: relative;">
+                <hr
+                    style="border-top: 1px solid #e5e7eb; margin: 0; position: absolute; top: 50%; width: 100%; z-index: 1;">
+                <span
+                    style="background: white; padding: 0 10px; position: relative; z-index: 2; font-family: 'Outfit';">O</span>
+            </div>
+
+            <button id="btnGoogle" class="btn-primary"
+                style="background: white; color: #374151; border: 1px solid #d1d5db; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"
+                    width="20" height="20">
+                <span id="btnGoogleText">Ingresar con Google</span>
+                <div id="loaderGoogle" class="loader"
+                    style="display:none; border-color: #374151; border-top-color: transparent;"></div>
+            </button>
+
+            <p id="statusMsg" class="status-msg"></p>
+
+            <div style="text-align: center; margin-top: 15px;">
+                <button id="btnDocente" class="btn"
+                    style="background: transparent; color: #ffffff; border: none; font-size: 0.95em; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); cursor: pointer; padding: 5px;">
+                    🎓 <span style="text-decoration: underline;">Acceso Exclusivo para Docentes</span>
+                </button>
+            </div>
+
+            <div class="footer-info">
+                <p style="margin-bottom:0;">Estado del Servidor: <span id="serverStatus"
+                        class="status-indicator checking">Verificando...</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer estilo Index.html -->
+    <footer class="login-footer">
+        <div>
+            <p class="mb-1">&copy; 2026 <span class="fw-bold">Atiy Pukllay</span>. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <!-- Firebase SDK (Opcional, preparado para futuro) -->
+    <!-- <script type="module" src="js/firebase-config.js"></script> -->
+    <script type="module" src="js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+@media (max-width: 767.98px) {
+    #scrollToTopBtn {
+        width: 30px;
+        height: 30px;
+        bottom: 100px;
+        left: 15px;
+    }
+
+    #scrollToTopBtn i {
+        font-size: 0.8rem;
+    }
+}
